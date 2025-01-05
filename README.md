@@ -1,1 +1,5 @@
-# Word-Sprint-Hackathon
+# HUDSON-RESORT-WEBSITE
+A responsive website for Hudson Resort, built with HTML, CSS, Bootstrap, and JavaScript. It includes user authentication, pages for services, rooms, cafeteria, blogs, and a contact form with integrated map.
+A responsive website for Hudson Resort, built with HTML, CSS, Bootstrap, and JavaScript. It includes user authentication, pages for services, rooms, cafeteria, blogs, and a contact form with integrated map.
+
+It features multiple pages including: Home (Index): An engaging landing page showcasing the resort's highlights. Sign Up, Login & Forgot Password: User authentication pages for account management. Services: Detailed descriptions of the resort's offerings. Cafeteria: Information about dining options available at the resort. Rooms: Overview of available accommodations, complete with images and descriptions. About Us: The story behind Hudson Resort, its mission, and values. Blogs: A section for sharing news, events, and updates. Contact: A form to get in touch with the resort, including a map for location guidance. The website leverages Bootstrap for responsive design and JavaScript for dynamic functionality, providing a seamless user experience across all devices.

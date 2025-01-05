@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | HUDSON RESORT</title>
+    <!-- link of external css file -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- link of bootsrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- link of poppins font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans+Old+South+Arabian&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Workbench&display=swap"
+        rel="stylesheet">
+
+    <!-- Including Font Awesome CDN in our <head> section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- css link of icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- including link for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        body {
+            position: relative;
+            height: 100%;
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Position the registration button to the top right corner */
+        .navbar .d-flex {
+            position: relative;
+        }
+
+        .navbar .btn-success {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+
+
+        /* css for moving sign up in left */
+        .offcanvas-body {
+            padding: 1rem;
+        }
+
+        .offcanvas-header {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .btn-success {
+            margin-right: 0.5rem;
+            /* Adds spacing between the button and the link */
+        }
+
+        .text-muted {
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .btn-close {
+            margin-left: auto;
+        }
+
+
+        /* Styles for the swiper container */
+        .swiper {
+            width: 100%;
+            height: 500px;
+            /* Set a fixed height for the slider */
+        }
+
+        /* Ensure the swiper slides take full width */
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Image styling within each slide */
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensure images cover the slide without stretching */
+        }
+
+        /* Ensure the overlay darkens the image less */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            /* Reduced opacity for a lighter dark effect */
+            z-index: 1;
+        }
+
+        /* Image styling within each slide */
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensure images cover the slide without stretching */
+        }
+
+        /* Text container styling for better readability on the slide */
+        .slide-text {
+            position: absolute;
+            z-index: 2;
+            color: #fff;
+            padding: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            /* Ensure text does not overflow */
+
+
+        }
+
+        /* Header styling within slide text */
+        .slide-text h2 {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Paragraph styling within slide text */
+        .slide-text p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Styles for autoplay progress indicator in swiper */
+        .autoplay-progress {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            z-index: 10;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--swiper-theme-color);
+        }
+
+        .autoplay-progress svg {
+            --progress: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            stroke-width: 4px;
+            stroke: var(--swiper-theme-color);
+            fill: none;
+            stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+            stroke-dasharray: 125.6;
+            transform: rotate(-90deg);
+        }
+
+
+        .btn-success i {
+            margin-right: 5px;
+            /* Adjust the spacing between the icon and text if needed */
+        }
+
+        .d-flex .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Make navbar items responsive */
+        .navbar-nav .nav-item .nav-link {
+            padding: 0.5rem 1rem;
+        }
+
+        .navbar-toggler {
+            margin-left: auto;
+        }
+
+        /* Registration button adjustments */
+
+        .offcanvas-body {
+            display: flex;
+            justify-content: flex-end;
+            /* Aligns items to the end of the flex container */
+        }
+
+        .button-container {
+            display: flex;
+            align-items: center;
+            /* Vertically center the items if needed */
+        }
+
+        .button-container .btn {
+            margin-right: 15px;
+            /* Add some space between the button and the link */
+        }
+
+        /* Ensure icon and text are in a single row */
+        .nav-item .btn-success {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-success i {
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .navbar-toggler {
+                display: block;
+                /* Ensure the toggle button is always visible */
+            }
+
+            .navbar-nav .nav-item {
+                text-align: center;
+                padding: 0.5rem;
+            }
+
+            .offcanvas-body .btn-success {
+                margin-right: auto;
+            }
+
+            .offcanvas-body .text-muted {
+                margin-left: auto;
+            }
+        }
+
+        /* Additional general styling */
+        .offcanvas-body {
+            padding: 1rem;
+        }
+
+        .offcanvas-header {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* blog1 */
+        .container1 {
+            padding: 2rem;
+            background-color: #f8f9fa;
+            /* Light grey background */
+            border-radius: 0.5rem;
+        }
+
+        #blogss h2 {
+            color: #343a40;
+            /* Dark grey for titles */
+        }
+
+        #blogss p {
+            color: #6c757d;
+            /* Medium grey for paragraph */
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+
+        .containers {
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-left {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-left:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-title {
+            color: #343a40;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+        .text-muted:hover{
+      font-weight: bold;
+      cursor: pointer;
+    }
+        .blog-title:hover {
+            color: #007bff;
+        }
+
+        .blog-content {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .blog-btn {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .blog-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .blog-right {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .blog-media {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+        }
+
+        .blog-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .blog-right:hover .blog-img {
+            transform: scale(1.1);
+        }
+
+
+        /* /blog 2 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Filter Section */
+        .post-filter {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .filter-item {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            margin: 0 5px;
+            display: inline-block;
+            border-radius: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .filter-item:hover,
+        .filter-item.active-filter {
+            background-color: #FFA500;
+        }
+
+        /* Post Section */
+        .post {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .post-box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 30%;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .post-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .post-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 5px solid #FFA500;
+        }
+
+        .category {
+            color: #FFA500;
+            margin: 10px 0;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .post-title {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .post-title:hover {
+            color: #FFA500;
+        }
+
+        .post-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .post-description {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .profile-name {
+            color: #333;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .post-box {
+                width: 48%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .post-box {
+                width: 100%;
+            }
+        }
+
+        /*for margin */
+        .post-title,
+        .post-description,
+        .category,
+        .post-date,
+        .profile-name {
+            margin-left: 15px;
+            /* Adjust the margin as needed */
+        }
+
+        /* Decrease the font size of the headers (like News, Food, etc.) */
+        .filter-item {
+            font-size: 0.9rem;
+            /* Decrease the font size */
+        }
+    </style>
+</head>
+<header>
+
+ <!-- NAVBAR 1 -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="./index.html">
+            <span class="text-warning fw-bold fs-3">Hudson</span>
+        </a>
+
+        <!-- Toggle button for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./team.html">Team</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Services
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="./services.html#services1">Swimming pool</a></li>
+                        <li><a class="dropdown-item" href="./services.html#services1">Gym</a></li>
+                        <li><a class="dropdown-item" href="./services.html#services1">Spa</a></li>
+                        <li><a class="dropdown-item" href="./services.html#services1">Private Beach</a></li>
+                        <li><a class="dropdown-item" href="./services.html#services1">Boat Tour</a></li>
+                        <li><a class="dropdown-item" href="./services.html#services1">Event spaces</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="./services.html#services1">Conference Room</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./cafeteria.html">Cafeteria</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./contact.html">Contact</a>
+                </li>
+                <!-- Move Accounts Button Here -->
+                <li class="nav-item">
+                    <button class="btn btn-success shadow-none" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                        <i class="bi bi-person-circle"></i> &nbsp;Accounts
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+  
+
+    <!-- Register yourself -->
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasTopLabel"><span class="text-warning">SIGN UP / SIGN IN</span></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <button type="button" class="btn btn-success" onclick="window.location.href='sign_up.html'">Sign
+                    up</button>
+                <a href="login.html" class="text-muted" style="text-decoration: none;">Already have an account?</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    </nav>
+
+</header>
+
+<body>
+       <!-- swiper slider -->
+    <section>
+        <!-- Swiper Container -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+                <!-- Slide 5 -->
+                <div class="swiper-slide">
+                    <img src="./image1/blog8.avif" alt="pic4">
+                    <div class="overlay"></div>
+                    <div class="slide-text">
+                        <h2>Elegant Ambiance Throughout</h2>
+                        <p>Our beautifully appointed corridors create a sense of elegance . Admire the intricate
+                            details or take a dip in the cool waters </p>
+                    </div>
+                </div>
+
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <img src="./image1/blogs.avif" alt="pic9">
+                    <div class="overlay"></div>
+                    <div class="slide-text">
+                        <h2>Unwind in Paradise</h2>
+                        <p>Escape the hustle and bustle and soak up the sun by our sparkling pool. Enjoy refreshing
+                            cocktails,
+                            lounge on comfortable sunbeds, or take a dip in the cool waters.</p>
+                    </div>
+                </div>
+
+
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <img src="./image1/blogs2.jpg" alt="pic5">
+                    <div class="overlay"></div>
+                    <div class="slide-text">
+                        <h2>Breathtaking Views</h2>
+                        <p>Take in panoramic views of city landscape from our hotel's vantage point. Enjoy stunning
+                            sunsets, city
+                            lights, or natural beauty.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <img src="./image1/blog3.avif" alt="pic4">
+                    <div class="overlay"></div>
+                    <div class="slide-text">
+                        <h2>Elegant Ambiance Throughout</h2>
+                        <p>Our beautifully appointed corridors create a sense of elegance and sophistication. .</p>
+                    </div>
+                </div>
+
+
+
+                <!-- Slide 4 -->
+                <div class="swiper-slide">
+                    <img src="./image1/blog4.jpg" alt="pic5">
+                    <div class="overlay"></div>
+                    <div class="slide-text">
+                        <h2>Peaceful suite</h2>
+                        <p>Our Deluxe Room offers a spacious designed retreat for a comfortable stay. Enjoy city views
+                            from your large windows</p>
+                    </div>
+                </div>
+
+
+                <!-- Slide 7 -->
+                <div class="swiper-slide">
+                    <img src="./image1/blog5.avif" alt="pic5">
+                    <div class="overlay"></div>
+                    <div class="slide-text">
+                        <h2>Breathtaking Views</h2>
+                        <p>Take in panoramic views of city landscape from our hotel's vantage point. Enjoy stunning
+                            sunsets, city
+                            lights, or natural beauty.</p>
+                    </div>
+                </div>
+                <!-- Slide 6 -->
+                <div class="swiper-slide">
+                    <img src="./image1/blog6.jpg" alt="pic9">
+                    <div class="overlay"></div>
+                    <div class="slide-text">
+                        <h2>Unwind in Paradise</h2>
+                        <p>Escape the hustle and bustle and soak up the sun by our sparkling pool. Enjoy refreshing
+                            cocktails,
+                            lounge on comfortable sunbeds, or take a dip in the cool waters.</p>
+                    </div>
+                </div>
+
+
+    </section>
+
+
+    <!--  blog2-->
+    <section data-aos="fade-up-right" id="blog" style="margin-top: 10%;">
+        <div class="post-filter container">
+            <span class="filter-item active-filter" data-filter="all">All</span>
+            <span class="filter-item" data-filter="food">Food</span>
+            <span class="filter-item" data-filter="tech">Event Spaces</span>
+            <span class="filter-item" data-filter="news">Birthday</span>
+        </div>
+
+        <div class="post container">
+            <!-- Post 1 -->
+            <div class="post-box news">
+                <img src="image2/birthday.avif" alt="" class="post-img">
+                <h2 class="category">Birthday</h2>
+                <a href="#" class="post-title">Memorable Moments</a>
+                <span class="post-date">12 sep 2024</span>
+                <p class="post-description">At our hotel, we believe that birthdays should be nothing short of
+                    spectacular. Our birthday management team goes above and beyond to create celebrations that are as
+                    unique as you are.</p>
+                <div class="profile">
+                    <img src="./image1/team1.webp" alt="" class="profile-img">
+                    <span class="profile-name">MKHB</span>
+                </div>
+            </div>
+            <!-- Post 2 -->
+            <div class="post-box news">
+                <img src="image2/birthday1.jpg" alt="" class="post-img">
+                <h2 class="category">Birthday</h2>
+                <a href="#" class="post-title">Personalized Birthday Celebrations</a>
+                <span class="post-date">15 sep 2024</span>
+                <p class="post-description">From personalized decorations to custom cakes and entertainment, we take
+                    care of every detail to ensure your special day is filled with joy and unforgettable moments</p>
+                <div class="profile">
+                    <img src="image1/team11.avif" alt="" class="profile-img">
+                    <span class="profile-name">Jane Doe</span>
+                </div>
+            </div>
+            <!-- Post 3 -->
+            <div class="post-box news">
+                <img src="image2/birthday6.jpg" alt="" class="post-img">
+                <h2 class="category">Birthday</h2>
+                <a href="#" class="post-title">Celebrating Milestones with Elegance</a>
+                <span class="post-date">20 sep 2024</span>
+                <p class="post-description">Whether it’s an intimate gathering or a grand party, we are committed to
+                    making your birthday . Trust us to turn your vision into a reality, leaving your day to the
+                    fullest..</p>
+                <div class="profile">
+                    <img src="./image1/team3.webp" alt="" class="profile-img">
+                    <span class="profile-name">John Smith</span>
+                </div>
+            </div>
+            <!-- Post 4 -->
+            <div class="post-box food">
+                <img src="image1/meal.avif" alt="" class="post-img">
+                <h2 class="category">Food</h2>
+                <a href="#" class="post-title">UNFORGETTABLE TOPPINGS</a>
+                <span class="post-date">22 Feb 2022</span>
+                <p class="post-description">Ensuring that every guest finds something to savor. Our commitment to
+                    quality and excellence is reflected in every dish, making your dining experience truly memorable.
+                </p>
+                <div class="profile">
+                    <img src="./image1/team4.webp" alt="" class="profile-img">
+                    <span class="profile-name">Alice Johnson</span>
+                </div>
+            </div>
+            <!-- Post 5 -->
+            <div class="post-box food">
+                <img src="image1/meal11.jpg" alt="" class="post-img">
+                <h2 class="category">Food</h2>
+                <a href="#" class="post-title">OUTSTANDING TASTE</a>
+                <span class="post-date">25 sep 2024</span>
+                <p class="post-description">Whether you’re enjoying a breakfast buffet, a casual lunch, or a gourmet
+                    dinner, every bite is a celebration of flavor. We take pride in our diverse menu that caters to all
+                    palates.</p>
+                <div class="profile">
+                    <img src="./image1/team44.avif" alt="" class="profile-img">
+                    <span class="profile-name">MKHB</span>
+                </div>
+            </div>
+            <!-- Post 6 -->
+            <div class="post-box food">
+                <img src="image1/meal4.avif" alt="" class="post-img">
+                <h2 class="category">Food</h2>
+                <a href="#" class="post-title">DELICIOUS FOOD</a>
+                <span class="post-date">2 sep 2024</span>
+                <p class="post-description">hotel’s culinary team is dedicated to delivering a dining experience that
+                    delights the senses. From innovative dishes, our chefs craft each meal with care and creativity</p>
+                <div class="profile">
+                    <img src="./image1/team6.avif" alt="" class="profile-img">
+                    <span class="profile-name">MKHB</span>
+                </div>
+            </div>
+            <!-- Post 7 -->
+            <div class="post-box tech">
+                <img src="image3/event spaces.avif" alt="" class="post-img">
+                <h2 class="category">Event Spaces</h2>
+                <a href="#" class="post-title">Versatile Event Spaces</a>
+                <span class="post-date">28 sep 2024</span>
+                <p class="post-description">Our hotel’s event spaces are designed to provide the perfect setting for any
+                    occasion, whether it's a corporate meeting, a lavish wedding, or an intimate gathering.</p>
+                <div class="profile">
+                    <img src="./image1/team7.jpg" alt="" class="profile-img">
+                    <span class="profile-name">David Brown</span>
+                </div>
+            </div>
+            <!-- Post 8 -->
+            <div class="post-box tech">
+                <img src="image3/event spaces1.avif" alt="" class="post-img">
+                <h2 class="category">Event Spaces</h2>
+                <a href="#" class="post-title">Sophisticated Venues</a>
+                <span class="post-date">01 sep 2024</span>
+                <p class="post-description">With state-of-the-art facilities, elegant decor, and a dedicated events
+                    team, we ensure that every event . Our versatile spaces can be customized to suit your needs,.</p>
+                <div class="profile">
+                    <img src="./image1/team55.jpg" alt="" class="profile-img">
+                    <span class="profile-name">Anna Williams</span>
+                </div>
+            </div>
+            <!-- Post 9 -->
+            <div class="post-box tech">
+                <img src="image3/event spaces2.avif" alt="" class="post-img">
+                <h2 class="category">Event Spaces</h2>
+                <a href="#" class="post-title">Tailored Event Spaces</a>
+                <span class="post-date">05 sep 2024</span>
+                <p class="post-description">ffering a seamless blend of functionality and style. We take pride in
+                    creating environments that inspire and impress, making your event a success from start to finish..
+                </p>
+                <div class="profile">
+                    <img src="./image1/team8.avif" alt="" class="profile-img">
+                    <span class="profile-name">Emily Clark</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- blog section 1 -->
+    <section data-aos="fade-up" data-aos-duration="3000">
+        <div class="container1 my-5">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="./image1/blog6.jpg" class="img-fluid rounded" alt="Blog Image">
+                </div>
+                <div class="col-md-6">
+                    <h2 id="blogss" class="mb-4">Luxurious Stay at Our Hotel</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac lacinia nulla. Nullam id
+                        dui eget nisi commodo consequat.</p>
+                    <a href="blog.html#blog" class="btn btn-warning mt-3">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="containers my-5">
+            <div class="row">
+                <!-- Left Partition: Blog Post -->
+                <div class="col-md-6 blog-left p-4">
+                    <h2 class="blog-title">Explore Our Luxurious Rooms</h2>
+                    <p class="blog-content">Discover the elegance and comfort of our well-appointed rooms, each designed
+                        to offer the ultimate in luxury and relaxation. Enjoy your stay with stunning views and modern
+                        amenities.</p>
+                    <a href="./index.html#rooms" class="btn btn-warning mt-3">Read More</a>
+                </div>
+
+                <!-- Right Partition: Additional Functionality (e.g., Image Gallery or Video) -->
+                <div class="col-md-6 blog-right p-0">
+                    <div class="blog-media">
+                        <img src="./image2/bedroom11.avif" class="img-fluid blog-img" alt="Luxurious Room">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- footer -->
+   <section  id=" contact" class="footer_wrapper mt-3 mt-md-0 pb-0">
+    <div class="container pb-3">
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <h5>HUDSON RESORT</h5>
+          <p class="ps-0">
+            Discover the world of comfort, luxury and adventure as you explore our curated selected of
+            hotels, making every moment of your getaway truly extraordinary
+          </p>
+          <div class="contact-info">
+            <ul class="list-unstyled">
+              <li><a href="#"><i class="fa fa-home me-3"></i>No. 96, South City, London</a></li>
+              <li><a href="#"><i class="fa fa-phone me-3"></i>+923137825639</a></li>
+              <li><a href="#"><i class="fa fa-envelope me-3"></i>hudson@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="link-widget p-0">
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./cafeteria.html">Cafeteria</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="./team.html">Team</a></li>
+            <li><a href="./services.html">Amenities</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-lg-3 col-md-6">
+          <h5>More Links</h5>
+          <ul class="link-widget p-0">
+            <li><a href="./index.html#about">About Us</a></li>
+            <li><a href="./team.html#team">Our Offices</a></li>
+           
+            <li><a href="./reset_password.html">Reset</a></li>
+            <li><a href="./team.html">Team</a></li>
+            <li><a href="./sign_up.html">Sign Up</a></li>
+            <li><a href="./login.html">Login</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Newsletter</h5>
+          <div class="form-group mb-6">
+            <input type="email" class="form-control bg-transparent" placeholder="enter your email here">
+            <button type="submit" class="main-btn rounded-2 mt-3 border-white text-white">Subscribe</button>
+          </div>
+          <h5>Stay Connected </h5>
+          <ul class="social-network d-flex align-items-center p-0">
+            <li><a href="https://www.facebook.com/signup"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/i/flow/signup?lang=en"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.google.co.uk/"><i class="fab fa-google-plus-g"></i></a></li>
+            <li><a href="https://vimeo.com/log_in"><i class="fab fa-vimeo-v"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="conatiner-fluid copyright-section">
+      <p>Copyright <a href="./index.html">&copy;AuthArtisans</a>All Rights Resesrved</p>
+    </div>
+  </section>
+
+
+    <!-- for swiper in swiper.js library -->
+    <div class=" autoplay-progress">
+        <svg viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="20"></circle>
+        </svg>
+        <span></span>
+    </div>
+    </div>
+
+    <!-- bootsrap link  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- js link for animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- script tag for swiperjs library -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- js file -->
+    <script src="./script.js"></script>
+    <!-- jquery link -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- js owl carousel link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- javascript -->
+    <script>
+        $(document).ready(function () {
+            $('.filter-item').click(function () {
+                const filterValue = $(this).attr('data-filter');
+                if (filterValue == 'all') {
+                    $('.post-box').show('1000');
+                } else {
+                    $('.post-box').not('.' + filterValue).hide('1000');
+                    $('.post-box').filter('.' + filterValue).show('1000');
+                }
+
+                $(this).addClass('active-filter').siblings().removeClass('active-filter');
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

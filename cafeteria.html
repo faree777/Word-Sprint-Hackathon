@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafeteria | HUDSON RESORT</title>
+  <!-- link of external css file -->
+  <link rel="stylesheet" href="./style.css">
+  <!-- link of bootsrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- link of poppins font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans+Old+South+Arabian&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Workbench&display=swap"
+    rel="stylesheet">
+
+  <!-- Including Font Awesome CDN in our <head> section -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- css link of icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- including link for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <style>
+    body {
+      position: relative;
+      height: 100%;
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Position the registration button to the top right corner */
+    .navbar .d-flex {
+      position: relative;
+    }
+
+    .navbar .btn-success {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+
+    /* css for moving sign up in left */
+    .offcanvas-body {
+      padding: 1rem;
+    }
+
+    .offcanvas-header {
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    .d-flex {
+      display: flex;
+    }
+
+    .align-items-center {
+      align-items: center;
+    }
+
+    .btn-success {
+      margin-right: 0.5rem;
+      /* Adds spacing between the button and the link */
+    }
+
+    .text-muted {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .btn-close {
+      margin-left: auto;
+    }
+
+
+    /* Styles for the swiper container */
+    .swiper {
+      width: 100%;
+      height: 500px;
+      /* Set a fixed height for the slider */
+    }
+
+    /* Ensure the swiper slides take full width */
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Image styling within each slide */
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Ensure images cover the slide without stretching */
+    }
+
+    /* Ensure the overlay darkens the image less */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      /* Reduced opacity for a lighter dark effect */
+      z-index: 1;
+    }
+
+    /* Image styling within each slide */
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Ensure images cover the slide without stretching */
+    }
+
+    /* Text container styling for better readability on the slide */
+    .slide-text {
+      position: absolute;
+      z-index: 2;
+      color: #fff;
+      padding: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      max-width: 90%;
+      /* Ensure text does not overflow */
+
+
+    }
+
+    /* Header styling within slide text */
+    .slide-text h2 {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Paragraph styling within slide text */
+    .slide-text p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Styles for autoplay progress indicator in swiper */
+    .autoplay-progress {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--swiper-theme-color);
+    }
+
+    .autoplay-progress svg {
+      --progress: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      stroke-width: 4px;
+      stroke: var(--swiper-theme-color);
+      fill: none;
+      stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+      stroke-dasharray: 125.6;
+      transform: rotate(-90deg);
+    }
+
+
+    .btn-success i {
+      margin-right: 5px;
+      /* Adjust the spacing between the icon and text if needed */
+    }
+
+    .d-flex .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Make navbar items responsive */
+    .navbar-nav .nav-item .nav-link {
+      padding: 0.5rem 1rem;
+    }
+
+    .navbar-toggler {
+      margin-left: auto;
+    }
+
+    /* Registration button adjustments */
+    .offcanvas-body {
+      display: flex;
+      justify-content: flex-end;
+      /* Aligns items to the end of the flex container */
+    }
+
+    .button-container {
+      display: flex;
+      align-items: center;
+      /* Vertically center the items if needed */
+    }
+
+    .button-container .btn {
+      margin-right: 15px;
+      /* Add some space between the button and the link */
+    }
+
+
+    /* Ensure icon and text are in a single row */
+    .nav-item .btn-success {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    .btn-success i {
+      margin-right: 0.5rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+      .navbar-toggler {
+        display: block;
+        /* Ensure the toggle button is always visible */
+      }
+
+      .navbar-nav .nav-item {
+        text-align: center;
+        padding: 0.5rem;
+      }
+
+      .offcanvas-body .btn-success {
+        margin-right: auto;
+      }
+
+      .offcanvas-body .text-muted {
+        margin-left: auto;
+      }
+    }
+
+    /* Additional general styling */
+    .offcanvas-body {
+      padding: 1rem;
+    }
+
+    .offcanvas-header {
+      border-bottom: 1px solid #dee2e6;
+    }
+
+
+    /* css for our top notch items */
+
+    .grid-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      list-style: none;
+      /* Removes the bullet points */
+      padding-left: 0;
+      /* Removes any default padding */
+      margin: 0;
+      /* Removes default margin */
+    }
+
+
+    .section.service {
+      padding: 60px 0;
+      background-color: #f9f9f9;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: #ff8800;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .section-text {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .grid-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .service-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      max-width: 285px;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card-banner {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 2px solid #ff8800;
+    }
+
+    .img-cover {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-title {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .btn-text {
+      font-size: 14px;
+      color: #ff8800;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-text:hover {
+      text-decoration: underline;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .shape-1 {
+      bottom: -50px;
+      left: -100px;
+      transform: rotate(-15deg);
+    }
+
+    .shape-2 {
+      top: -30px;
+      right: -80px;
+      transform: rotate(20deg);
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 1024px) {
+      .grid-list {
+        gap: 20px;
+      }
+
+      .card-banner {
+        --width: 245;
+        --height: 300;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 30px;
+      }
+
+      .grid-list {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .service-card {
+        max-width: 100%;
+      }
+
+      .card-banner {
+        --width: 100%;
+        --height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 24px;
+      }
+
+      .section-text {
+        font-size: 14px;
+      }
+
+      .btn-text {
+        font-size: 12px;
+      }
+
+      .card-title {
+        font-size: 18px;
+      }
+    }
+
+
+
+
+
+    /* css for reservation */
+    .reservation {
+      padding: 60px 0;
+    }
+
+    .reservation .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .reservation-form {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 30px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+    }
+
+    .form-left,
+    .form-right {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .form-left h2,
+    .form-right h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-text {
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    .input-wrapper {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .input-field {
+      width: calc(50% - 15px);
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      background-color: #fff;
+      color: #333;
+      /* Ensure text color is dark for contrast */
+      appearance: none;
+      /* Remove default browser styling */
+    }
+
+    .input-field[type="date"] {
+      padding-right: 40px;
+    }
+
+    textarea.input-field {
+      width: 100%;
+      height: 100px;
+      resize: none;
+    }
+
+    .icon-wrapper {
+      position: relative;
+      width: calc(33.33% - 10px);
+      min-width: 100px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      /* Adjust the gap as needed */
+    }
+
+    .icon-wrapper ion-icon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #888;
+    }
+
+    .input-field select,
+    .input-field[type="date"] {
+      padding-left: 40px;
+    }
+
+    .btn-secondary {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #ff8800;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e67e22;
+    }
+
+    .form-right {
+      padding: 30px;
+      color: #fff;
+      background-size: cover;
+      border-radius: 10px;
+      background: url('./images/meal.avif') no-repeat center center;
+      position: relative;
+      overflow: hidden;
+    }
+
+
+    .form-right::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      /* Semi-transparent overlay for contrast */
+      z-index: 1;
+    }
+
+    .form-right h2 {
+      color: #ff8800;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-right .contact-label {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-right .contact-number,
+    .form-right address {
+      font-size: 16px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .separator {
+      margin: 20px 0;
+      height: 1px;
+      background-color: #fff;
+      opacity: 0.3;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e67e22;
+    }
+
+    .form-right {
+      padding: 30px;
+      color: #fff;
+      background: url('./images/meal.avif') no-repeat center center;
+      background-size: cover;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-right h2 {
+      color: #ff8800;
+
+    }
+
+    .form-right .contact-label {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-right .contact-number,
+    .form-right address {
+      font-size: 16px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .separator {
+      margin: 20px 0;
+      height: 1px;
+      background-color: #fff;
+      opacity: 0.3;
+    }
+
+    select.input-field {
+      background-color: #fff;
+      /* Set background color */
+      color: #333;
+      /* Set text color */
+      border: 1px solid #ddd;
+      /* Set border color */
+      padding-left: 40px;
+      /* Adjust padding for icon space */
+    }
+
+    .icon-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 150px;
+      /* Adjust width as needed */
+    }
+
+    .icon-wrapper ion-icon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #888;
+      /* Icon color */
+    }
+
+    .icon-wrapper select,
+    .icon-wrapper input[type="date"] {
+      padding-left: 40px;
+      /* Ensure space for icon */
+    }
+
+    .input-field {
+      width: 100%;
+      /* Ensure full width for better layout */
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      background-color: #fff;
+      /* Ensure background color is white */
+      color: #333;
+      /* Ensure text color is dark for contrast */
+      appearance: none;
+      /* Remove default browser styling */
+    }
+
+    /* Custom styles for the select element */
+    .input-field[type="date"] {
+      padding-right: 40px;
+      /* Extra padding for date input */
+    }
+
+    select.input-field {
+      background-color: #fff;
+      /* Set background color */
+      color: #333;
+      /* Set text color */
+      border: 1px solid #ddd;
+      /* Set border color */
+      padding-left: 40px;
+      /* Adjust padding for icon space */
+    }
+
+    .icon-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 150px;
+      /* Adjust width as needed */
+    }
+
+    .icon-wrapper ion-icon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #888;
+      /* Icon color */
+    }
+
+    .icon-wrapper select,
+    .icon-wrapper input[type="date"] {
+      padding-left: 40px;
+      /* Ensure space for icon */
+    }
+
+    @media (max-width: 768px) {
+      .reservation-form {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .form-left,
+      .form-right {
+        width: 100%;
+      }
+
+      .input-wrapper {
+        flex-direction: column;
+      }
+
+      .icon-wrapper {
+        width: 100%;
+      }
+
+      .input-field {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .form-right {
+        padding: 20px;
+        font-size: 14px;
+      }
+
+      .form-right h2 {
+        font-size: 24px;
+      }
+
+      .btn-secondary {
+        width: 100%;
+      }
+
+      .input-wrapper,
+      .icon-wrapper {
+        gap: 10px;
+      }
+
+      .contact-number,
+      address,
+      .body-4 {
+        font-size: 14px;
+      }
+    }
+
+    /*css for event */
+    /* Specific Styles for #event-section */
+    #event-section {
+      padding: 60px 0;
+      background-color: #f9f9f9;
+    }
+
+    #event-section .container {
+      text-align: center;
+      /* Center text inside the container */
+    }
+
+    #event-section .section-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    #event-section .section-title {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+
+    #event-section .grid-list {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      /* Adjust column width */
+      padding: 0;
+      list-style: none;
+    }
+
+    #event-section .event-card {
+      position: relative;
+      overflow: hidden;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #event-section .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    #event-section .card-banner {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      /* Decrease height */
+    }
+
+    #event-section .img-cover {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: blur(2px);
+      /* Less blur for clearer content */
+      transition: filter 0.3s ease;
+    }
+
+    #event-section .event-card:hover .img-cover {
+      filter: blur(0px);
+      /* Remove blur on hover */
+    }
+
+    #event-section .publish-date {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      /* Decrease font size */
+    }
+
+    #event-section .card-content {
+      padding: 15px;
+      /* Decrease padding */
+      text-align: center;
+    }
+
+    #event-section .card-subtitle {
+      color: #ff8800;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      font-size: 14px;
+      /* Decrease font size */
+      margin-bottom: 10px;
+    }
+
+    #event-section .card-title {
+      font-size: 20px;
+      /* Decrease font size */
+      color: #333;
+      margin: 0;
+    }
+
+    #event-section .btn-primary {
+      display: inline-block;
+      padding: 10px 20px;
+      /* Decrease padding */
+      color: #fff;
+      background-color: #007bff;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 20px;
+      font-size: 14px;
+      /* Decrease font size */
+      font-weight: bold;
+    }
+
+    #event-section .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      #event-section .grid-list {
+        grid-template-columns: 1fr;
+      }
+
+      #event-section .card-content {
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #event-section .btn-primary {
+        width: 100%;
+        padding: 12px;
+        /* Decrease padding */
+      }
+    }
+
+
+    /* js for food list */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .section {
+      padding: 30px 0;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .food-card {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      background-color: #fff;
+    }
+
+    .food-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin: 0 auto;
+    }
+
+    .food-info {
+      padding: 10px;
+    }
+
+    .food-title {
+      margin: 10px 0 5px;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .food-description {
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .food-price {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+  </style>
+</head>
+<header>
+
+ <!-- NAVBAR 1 -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">
+          <span class="text-warning fw-bold fs-3">Hudson</span>
+      </a>
+
+      <!-- Toggle button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="./team.html">Team</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Services
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="./services.html#services1">Swimming pool</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Gym</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Spa</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Private Beach</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Boat Tour</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Event spaces</a></li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Conference Room</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="./cafeteria.html">Cafeteria</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="./blog.html">Blog</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="./contact.html">Contact</a>
+              </li>
+              <!-- Move Accounts Button Here -->
+              <li class="nav-item">
+                  <button class="btn btn-success shadow-none" type="button" data-bs-toggle="offcanvas"
+                      data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                      <i class="bi bi-person-circle"></i> &nbsp;Accounts
+                  </button>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+  <!-- Register yourself -->
+  <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasTopLabel"><span class="text-warning">SIGN UP / SIGN IN</span></h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <button type="button" class="btn btn-success" onclick="window.location.href='sign_up.html'">Sign
+          up</button>
+        <a href="login.html" class="text-muted" style="text-decoration: none;">Already have an account?</a>
+      </div>
+    </div>
+  </div>
+  </nav>
+
+</header>
+
+<body>
+     <!-- swiper slider -->
+  <section>
+    <!-- Swiper Container -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <img src="./images/newfood.avif" alt="pic9">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h2>Unwind in Paradise</h2>
+            <p>Escape the hustle and bustle and soak up the sun by our sparkling pool. Enjoy refreshing
+              cocktails,
+              lounge on comfortable sunbeds, or take a dip in the cool waters.</p>
+          </div>
+        </div>
+
+
+        <!-- Slide 5 -->
+        <div class="swiper-slide">
+          <img src="./image1/swiper22.jpg" alt="pic4">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h2>Elegant Ambiance Throughout</h2>
+            <p>Our beautifully appointed corridors create a sense of elegance . Admire the intricate
+              details or take a dip in the cool waters </p>
+          </div>
+        </div>
+
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <img src="./images/slider2.webp" alt="pic5">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h2>Breathtaking Views</h2>
+            <p>Take in panoramic views of city landscape from our hotel's vantage point. Enjoy stunning
+              sunsets, city
+              lights, or natural beauty.</p>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <img src="./image3/dining area1.avif" alt="pic4">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h2>Elegant Ambiance Throughout</h2>
+            <p>Our beautifully appointed corridors create a sense of elegance and sophistication. .</p>
+          </div>
+        </div>
+
+
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <img src="./images/food2.avif" alt="pic5">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h2>Peaceful suite</h2>
+            <p>Our Deluxe Room offers a spacious designed retreat for a comfortable stay. Enjoy city views
+              from your large windows</p>
+          </div>
+        </div>
+
+
+        <!-- Slide 7 -->
+        <div class="swiper-slide">
+          <img src="./images/food.jpg" alt="pic5">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h2>Breathtaking Views</h2>
+            <p>Take in panoramic views of city landscape from our hotel's vantage point. Enjoy stunning
+              sunsets, city
+              lights, or natural beauty.</p>
+          </div>
+        </div>
+        <!-- Slide 6 -->
+        <div class="swiper-slide">
+          <img src="./image1/meal8.avif" alt="pic9">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h2>Unwind in Paradise</h2>
+            <p>Escape the hustle and bustle and soak up the sun by our sparkling pool. Enjoy refreshing
+              cocktails,
+              lounge on comfortable sunbeds, or take a dip in the cool waters.</p>
+          </div>
+        </div>
+
+
+  </section>
+
+  <!-- cafeteria top notch deals -->
+  <section data-aos="zoom-out-up" id="WeOfferTopNotch" class="section service bg-black-10 text-center"
+    aria-label="service">
+    <div class="container">
+
+      <p style=" color: FFA500; font-weight: bolder;" class="section-subtitle label-2" data-aos="fade-up">Flavors For
+        Royalty</p>
+
+      <h2 class="headline-1 section-title" data-aos="fade-up" style="color:black;">We Offer Top Notch</h2>
+
+      <p class="section-text" data-aos="fade-up">
+        Indulge in a culinary journey where every dish is crafted to perfection. Our top-notch menu features a selection
+        of gourmet delights, from hearty breakfasts to exquisite appetizers and refreshing drinks. Experience flavors
+        that tantalize your taste buds, each bite promising a taste of luxury
+      </p>
+
+      <ul class="grid-list">
+
+
+        <li>
+          <div class="service-card" data-aos="fade-up">
+            <a href="#" class="has-before hover:shine">
+              <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                <img src="./image1/app4.jpg" width="285" height="336" loading="lazy" alt="Appetizers" class="img-cover">
+              </figure>
+            </a>
+            <div class="card-content">
+              <h3 class="title-4 card-title">
+                <a style="text-decoration: none; list-style: none; color: black; font-weight: bolder;"
+                  href="#">Appetizers</a>
+              </h3>
+              <a style="color:#FFA500 ;" href="./cafeteria.html#food-menu" class="btn-text hover-underline label-2">View
+                Menu</a>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="service-card" data-aos="fade-up">
+            <a href="#" class="has-before hover:shine">
+              <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                <img src="./images/egg.jpg" width="285" height="336" loading="lazy" alt="Breakfast" class="img-cover">
+              </figure>
+            </a>
+            <div class="card-content">
+              <h3 class="title-4 card-title">
+                <a style="text-decoration: none; list-style: none; color: black; font-weight: bolder;"
+                  href="#">Breakfast</a>
+              </h3>
+              <a style="color: #FFA500;" href="./cafeteria.html#food-menu" class="btn-text hover-underline label-2">View
+                Menu</a>
+            </div>
+          </div>
+        </li>
+
+
+
+        <li>
+          <div class="service-card" data-aos="fade-up">
+            <a href="#" class="has-before hover:shine">
+              <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                <img src="./image3/drink4.avif" width="285" height="336" loading="lazy" alt="Drinks" class="img-cover">
+              </figure>
+            </a>
+            <div class="card-content">
+              <h3 class="title-4 card-title">
+                <a style="text-decoration: none; list-style: none; color: black; font-weight: bolder;"
+                  href="#">Drinks</a>
+              </h3>
+              <a style="color: #FFA500;" href="./cafeteria.html#food-menu" class="btn-text hover-underline label-2">View
+                Menu</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- list of food -->
+  <section data-aos="fade-up" id="food-menu" class="section">
+    <div class="container">
+      <!-- Subtitle centered -->
+      <h2 style="color: black; font-weight: bolder; text-align: center; font-size: xx-large; margin-bottom: 3%;"
+        class="section-subtitle label-2" data-aos="fade-up">Our Delicious Menu</h2>
+
+
+
+      <div class="row">
+        <!-- Food Item 1 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="food-card">
+            <img src="./image1/burger.jpg" alt="Gourmet Burger" class="img-fluid">
+            <div class="food-info">
+              <h4 class="food-title">Gourmet Burger</h4>
+              <p class="food-description">Juicy beef patty with fresh lettuce, tomato, and a special sauce.</p>
+              <p class="food-price">$12.99</p>
+              <a href="./contact.html" class="btn btn-warning" role="button" style="color: white;">
+                Done
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Food Item 2 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="food-card">
+            <img src="./image1/Caesar Salad.jpg" alt="Caesar Salad" class="img-fluid">
+            <div class="food-info">
+              <h4 class="food-title">Caesar Salad</h4>
+              <p class="food-description">Crisp romaine lettuce with Caesar dressing, croutons, and parmesan.</p>
+              <p class="food-price">$9.99</p>
+              <a href="./contact.html" class="btn btn-warning" role="button" style="color: white;">
+                Done
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Food Item 3 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="food-card">
+            <img src="./image1/Spaghetti Carbonara.jpg" alt="Spaghetti Carbonara" class="img-fluid">
+            <div class="food-info">
+              <h4 class="food-title">Spaghetti Carbonara</h4>
+              <p class="food-description">Classic pasta with eggs, cheese, pancetta, and pepper.</p>
+              <p class="food-price">$14.99</p>
+              <a href="./contact.html" class="btn btn-warning" role="button" style="color: white;">
+                Done
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Food Item 4 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="food-card">
+            <img src="./image1/pizza.jpg" alt="Margherita Pizza" class="img-fluid">
+            <div class="food-info">
+              <h4 class="food-title">Margherita Pizza</h4>
+              <p class="food-description">Tomato, mozzarella, and fresh basil on a crispy crust.</p>
+              <p class="food-price">$11.99</p>
+              <a href="./contact.html" class="btn btn-warning" role="button" style="color: white;">
+                Done
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Food Item 5 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="food-card">
+            <img src="./image1/Grilled Salmon.jpg" alt="Grilled Salmon" class="img-fluid">
+            <div class="food-info">
+              <h4 class="food-title">Grilled Salmon</h4>
+              <p class="food-description">Tender salmon fillet with a lemon butter sauce.</p>
+              <p class="food-price">$15.99</p>
+              <a href="./contact.html" class="btn btn-warning" role="button" style="color: white;">
+                Done
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Food Item 6 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="food-card">
+            <img src="./image1/Chicken Alfredo.jpg" alt="Chicken Alfredo" class="img-fluid">
+            <div class="food-info">
+              <h4 class="food-title">Chicken Alfredo</h4>
+              <p class="food-description">Creamy Alfredo sauce with grilled chicken and fettuccine pasta.</p>
+              <p class="food-price">$13.99</p>
+              <a href="./contact.html" class="btn btn-warning" role="button" style="color: white;">
+                Done
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Food Item 7 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="food-card">
+            <img src="./images/tira.jpg" alt="Tiramisu" class="img-fluid">
+            <div class="food-info">
+              <h4 class="food-title">Tiramisu</h4>
+              <p class="food-description">Delicious coffee-flavored Italian dessert with mascarpone cheese.</p>
+              <p class="food-price">$6.99</p>
+              <a href="./contact.html" class="btn btn-warning" role="button" style="color: white;">
+                Done
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Food Item 8 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="food-card">
+            <img src="./images/greek.jpg" alt="Greek Salad" class="img-fluid">
+            <div class="food-info">
+              <h4 class="food-title">Greek Salad</h4>
+              <p class="food-description">A fresh mix of cucumbers, tomatoes, olives, and feta cheese.</p>
+              <p class="food-price">$8.99</p>
+              <a href="./contact.html" class="btn btn-warning" role="button" style="color: white;">
+                Done
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Food Item 9 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="food-card">
+            <img src="./images/sandwitch.jpg" alt="Sandwich" class="img-fluid">
+            <div class="food-info">
+              <h4 class="food-title">Sandwich</h4>
+              <p class="food-description">A fresh mix of cucumbers, tomatoes, olives, and feta cheese.</p>
+              <p class="food-price">$4.59</p>
+              <a href="./contact.html" class="btn btn-warning" role="button" style="color: white;">
+                Done
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- reservation -->
+
+  <section data-aos="fade-down" class="reservation">
+    <div class="container">
+      <div class="form reservation-form bg-black-10">
+        <form action="" class="form-left">
+          <h2 class="headline-1 text-center">Online Table Reservation</h2>
+          <p class="form-text text-center">
+            Booking request <a style="text-decoration: none; color: black;" href="tel:+92-123123456"
+              class="link">+92-123123456</a>
+            or fill out the order form
+          </p>
+          <div class="input-wrapper">
+            <input type="text" name="name" placeholder="Your Name" autocomplete="off" class="input-field">
+            <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
+          </div>
+          <div class="input-wrapper">
+            <div class="icon-wrapper">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+              <select name="person" class="input-field">
+                <option value="1-person">1 Person</option>
+                <option value="2-person">2 Person</option>
+                <option value="3-person">3 Person</option>
+                <option value="4-person">4 Person</option>
+                <option value="5-person">5 Person</option>
+                <option value="6-person">6 Person</option>
+                <option value="7-person">7 Person</option>
+              </select>
+              <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+            </div>
+            <div class="icon-wrapper">
+              <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
+              <input type="date" name="reservation-date" class="input-field">
+              <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+            </div>
+
+
+            <div class="icon-wrapper">
+              <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+              <select name="time" class="input-field">
+                <option value="08:00am">08 : 00 am</option>
+                <option value="09:00am">09 : 00 am</option>
+                <option value="10:00am">10 : 00 am</option>
+                <option value="11:00am">11 : 00 am</option>
+                <option value="12:00am">12 : 00 am</option>
+                <option value="01:00pm">01 : 00 pm</option>
+                <option value="02:00pm">02 : 00 pm</option>
+                <option value="03:00pm">03 : 00 pm</option>
+                <option value="04:00pm">04 : 00 pm</option>
+                <option value="05:00pm">05 : 00 pm</option>
+                <option value="06:00pm">06 : 00 pm</option>
+                <option value="07:00pm">07 : 00 pm</option>
+                <option value="08:00pm">08 : 00 pm</option>
+                <option value="09:00pm">09 : 00 pm</option>
+                <option value="10:00pm">10 : 00 pm</option>
+              </select>
+              <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+            </div>
+          </div>
+
+
+          <textarea name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
+          <button type="submit" class="btn btn-secondary">
+            <span class="text text-1">
+              <a style="text-decoration: none; color: white;" href="./contact.html"> Book A Table</a>
+            </span>
+
+
+          </button>
+        </form>
+        <div class="form-right text-center" style="background-image: url(./image1/meal.avif)">
+          <h2 class="headline-1 text-center">Contact Us</h2>
+          <p class="contact-label">Booking Request</p>
+          <a style="text-decoration: none; color: white;" href="tel:+92-123123456"
+            class="body-1 contact-number hover-underline">+92-123123456</a>
+          <div class="separator"></div>
+          <p class="contact-label">Location</p>
+          <address class="body-4">
+            Restaurant St, Delicious City, <br>
+            London 9578, UK
+          </address>
+          <p class="contact-label">Lunch Time</p>
+          <p class="body-4">
+            Monday to Sunday <br>
+            11.00 am - 2.30pm
+          </p>
+          <p class="contact-label">Dinner Time</p>
+          <p class="body-4">
+            Monday to Sunday <br>
+            05.00 pm - 10.00pm
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- - #EVENT -->
+
+  <section data-aos="fade-right" id="event-section" class="section event bg-black-10" aria-label="event">
+    <div class="container">
+
+      <p class="section-subtitle label-2 text-center" style="font-weight: bolder;color:#FFA500 ;">Recent Updates</p>
+
+      <h2 class="section-title headline-1 text-center" style="font-size: xx-large; color: black;">Food For Our Upcoming
+        Event</h2> <!-- Updated header text -->
+
+      <ul class="grid-list">
+
+        <li>
+          <div class="event-card has-before hover:shine">
+
+            <div class="card-banner img-holder" style="--width: 350; --height: 450;">
+              <img src="./images/,eal7.avif" width="350" height="450" loading="lazy"
+                alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
+            </div>
+
+            <div class="card-content">
+              <p class="card-subtitle label-2 text-center">Food, Flavour</p>
+
+              <h3 class="card-title title-2 text-center">
+                Flavour so good you’ll try to eat with your eyes.
+              </h3>
+            </div>
+
+          </div>
+        </li>
+
+        <li>
+          <div class="event-card has-before hover:shine">
+
+            <div class="card-banner img-holder" style="--width: 350; --height: 450;">
+              <img src="./image1/app4.jpg" width="350" height="450" loading="lazy"
+                alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
+            </div>
+
+            <div class="card-content">
+              <p class="card-subtitle label-2 text-center">Healthy Food</p>
+
+              <h3 class="card-title title-2 text-center">
+                delightful journey at our upcoming event
+              </h3>
+            </div>
+
+          </div>
+        </li>
+
+        <li>
+          <div class="event-card has-before hover:shine">
+
+            <div class="card-banner img-holder" style="--width: 350; --height: 450;">
+              <img src="./image1/app2.jpg" width="350" height="450" loading="lazy"
+                alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
+            </div>
+
+            <div class="card-content">
+              <p class="card-subtitle label-2 text-center">Taste</p>
+
+              <h3 class="card-title title-2 text-center">
+                We’re showcasing our perfect dishes
+            </div>
+
+          </div>
+        </li>
+
+      </ul>
+
+      <a href="./blog.html" class="btn btn-primary">
+        <span class="text text-1">View Our Blog</span>
+      </a>
+
+    </div>
+  </section>
+
+
+
+   <!-- footer -->
+   <section  id=" contact" class="footer_wrapper mt-3 mt-md-0 pb-0">
+    <div class="container pb-3">
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <h5>HUDSON RESORT</h5>
+          <p class="ps-0">
+            Discover the world of comfort, luxury and adventure as you explore our curated selected of
+            hotels, making every moment of your getaway truly extraordinary
+          </p>
+          <div class="contact-info">
+            <ul class="list-unstyled">
+              <li><a href="#"><i class="fa fa-home me-3"></i>No. 96, South City, London</a></li>
+              <li><a href="#"><i class="fa fa-phone me-3"></i>+923137825639</a></li>
+              <li><a href="#"><i class="fa fa-envelope me-3"></i>hudson@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="link-widget p-0">
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./cafeteria.html">Cafeteria</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="./team.html">Team</a></li>
+            <li><a href="./services.html">Amenities</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-lg-3 col-md-6">
+          <h5>More Links</h5>
+          <ul class="link-widget p-0">
+            <li><a href="./index.html#about">About Us</a></li>
+            <li><a href="./team.html#team">Our Offices</a></li>
+           
+            <li><a href="./reset_password.html">Reset</a></li>
+            <li><a href="./team.html">Team</a></li>
+            <li><a href="./sign_up.html">Sign Up</a></li>
+            <li><a href="./login.html">Login</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Newsletter</h5>
+          <div class="form-group mb-6">
+            <input type="email" class="form-control bg-transparent" placeholder="enter your email here">
+            <button type="submit" class="main-btn rounded-2 mt-3 border-white text-white">Subscribe</button>
+          </div>
+          <h5>Stay Connected </h5>
+          <ul class="social-network d-flex align-items-center p-0">
+            <li><a href="https://www.facebook.com/signup"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/i/flow/signup?lang=en"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.google.co.uk/"><i class="fab fa-google-plus-g"></i></a></li>
+            <li><a href="https://vimeo.com/log_in"><i class="fab fa-vimeo-v"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="conatiner-fluid copyright-section">
+      <p>Copyright <a href="./index.html">&copy;AuthArtisans</a>All Rights Resesrved</p>
+    </div>
+  </section>
+
+
+
+  <!-- for swiper in swiper.js library -->
+  <div class=" autoplay-progress">
+    <svg viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="20"></circle>
+    </svg>
+    <span></span>
+  </div>
+  </div>
+
+  <!-- js link for bootsrap5 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- js link for animation -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- script tag for swiperjs library -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- js file -->
+  <script src="./script.js"></script>
+  <!-- jquery link -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- js owl carousel link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <!-- js for animation -->
+  <script>
+    AOS.init({
+      duration: 800, // Animation duration in milliseconds
+      once: true, // Whether animation should happen only once
+    });
+  </script>
+
+  <!-- js for top notch items -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Example JavaScript for interactive features if needed
+      const btn = document.querySelector('.btn-primary');
+
+      if (btn) {
+        btn.addEventListener('click', function () {
+          alert('Button clicked!');
+        });
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>

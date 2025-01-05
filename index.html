@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUDSON RESORT</title>
+  <!-- link of external css file -->
+  <link rel="stylesheet" href="./style.css">
+  <!-- link of bootsrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- link of poppins font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans+Old+South+Arabian&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Workbench&display=swap"
+    rel="stylesheet">
+
+  <!-- Including Font Awesome CDN in our <head> section -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- css link of icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- including link for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <style>
+    body {
+      position: relative;
+      height: 100%;
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Position the registration button to the top right corner */
+    .navbar .d-flex {
+      position: relative;
+    }
+
+    .navbar .btn-success {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+
+    /* css for moving sign up in left */
+    .offcanvas-body {
+      padding: 1rem;
+    }
+
+    .offcanvas-header {
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    .d-flex {
+      display: flex;
+    }
+
+    .align-items-center {
+      align-items: center;
+    }
+
+    .btn-success {
+      margin-right: 0.5rem;
+      /* Adds spacing between the button and the link */
+    }
+
+    .text-muted {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .btn-close {
+      margin-left: auto;
+    }
+
+    /* Styles for the swiper container  */
+    .swiper {
+      width: 100%;
+      height: 500px;
+      /* Set a fixed height for the slider */
+    }
+
+    /* Ensure the swiper slides take full width */
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+    }
+
+
+    /* Ensure the overlay darkens the image less */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      /* Reduced opacity for a lighter dark effect */
+      z-index: 1;
+    }
+
+    /* Image styling within each slide */
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Ensure images cover the slide without stretching */
+    }
+
+    /* Text container styling for better readability on the slide */
+    .slide-text {
+      position: absolute;
+      z-index: 2;
+      color: #fff;
+      padding: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      max-width: 90%;
+      /* Ensure text does not overflow */
+
+
+    }
+
+    /* Header styling within slide text */
+    .slide-text h2 {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Paragraph styling within slide text */
+    .slide-text p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Styles for autoplay progress indicator in swiper */
+    .autoplay-progress {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--swiper-theme-color);
+    }
+
+    .autoplay-progress svg {
+      --progress: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      stroke-width: 4px;
+      stroke: var(--swiper-theme-color);
+      fill: none;
+      stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+      stroke-dasharray: 125.6;
+      transform: rotate(-90deg);
+    }
+
+
+    .btn-success i {
+      margin-right: 5px;
+      /* Adjust the spacing between the icon and text if needed */
+    }
+
+    .d-flex .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Make navbar items responsive */
+    .navbar-nav .nav-item .nav-link {
+      padding: 0.5rem 1rem;
+    }
+
+    .navbar-toggler {
+      margin-left: auto;
+    }
+
+    /* Registration button adjustments */
+    .offcanvas-body {
+      display: flex;
+      justify-content: flex-end;
+      /* Aligns items to the end of the flex container */
+    }
+
+    .button-container {
+      display: flex;
+      align-items: center;
+      /* Vertically center the items if needed */
+    }
+
+    .button-container .btn {
+      margin-right: 15px;
+      /* Add some space between the button and the link */
+    }
+
+    /* Ensure icon and text are in a single row */
+    .nav-item .btn-success {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    .btn-success i {
+      margin-right: 0.5rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+      .navbar-toggler {
+        display: block;
+        /* Ensure the toggle button is always visible */
+      }
+
+      .navbar-nav .nav-item {
+        text-align: center;
+        padding: 0.5rem;
+      }
+
+      .offcanvas-body .btn-success {
+        margin-right: auto;
+      }
+
+      .offcanvas-body .text-muted {
+        margin-left: auto;
+      }
+    }
+
+    /* Additional general styling */
+    .offcanvas-body {
+      padding: 1rem;
+    }
+
+    .offcanvas-header {
+      border-bottom: 1px solid #dee2e6;
+    }
+    .text-muted:hover{
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<header>
+
+ <!-- NAVBAR 1 -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">
+          <span class="text-warning fw-bold fs-3">Hudson</span>
+      </a>
+
+      <!-- Toggle button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="./team.html">Team</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Services
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="./services.html#services1">Swimming pool</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Gym</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Spa</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Private Beach</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Boat Tour</a></li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Event spaces</a></li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="./services.html#services1">Conference Room</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="./cafeteria.html">Cafeteria</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="./blog.html">Blog</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="./contact.html">Contact</a>
+              </li>
+              <!-- Move Accounts Button Here -->
+              <li class="nav-item">
+                  <button class="btn btn-success shadow-none" type="button" data-bs-toggle="offcanvas"
+                      data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                      <i class="bi bi-person-circle"></i> &nbsp;Accounts
+                  </button>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+  <!-- Register yourself -->
+  <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasTopLabel"><span class="text-warning">SIGN UP / SIGN IN</span></h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="button-container">
+        <button type="button" class="btn btn-success" onclick="window.location.href='sign_up.html'">Sign up</button>
+        <a href="login.html" class="text-muted" style="text-decoration: none; ">Already have an account?</a>
+      </div>
+    </div>
+  </div>
+  </nav>
+
+</header>
+
+<body>
+     <!-- swiper slider -->
+  <section>
+    <!-- Swiper Container -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <img src="./images/pool1.jpg" alt="pic5">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h1>Breathtaking Views</h1>
+            <p style="font-size: 20px;" >Take in panoramic views of city landscape from our hotel's vantage point. Enjoy stunning sunsets, city
+              lights, or natural beauty.</p>
+          </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="swiper-slide">
+          <img src="./images/view.jpg" alt="pic5">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h1>Breathtaking Views</h1>
+            <p style="font-size: 20px;" >Take in panoramic views of city landscape from our hotel's vantage point. Enjoy stunning sunsets, city
+              lights, or natural beauty.</p>
+          </div>
+        </div>
+
+
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <img src="./image1/about1.avif" alt="pic4">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h1>Elegant Ambiance Throughout</h1>
+            <p style="font-size: 20px;" >Our beautifully appointed corridors create a sense of elegance and sophistication. .</p>
+          </div>
+        </div>
+
+
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <img src="./image2/bed.jpg" alt="pic5">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h1>Peaceful suite</h1>
+            <p style="font-size: 20px;" >Our Deluxe Room offers a spacious designed retreat for a comfortable stay. Enjoy city views from your
+              large windows</p>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <img src="./image1/boating_area.jpg" alt="pic9">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h1>Unwind in Paradise</h1>
+            <p style="font-size: 20px;" >Escape the hustle and bustle and soak up the sun by our sparkling pool. Enjoy refreshing cocktails,
+              lounge on comfortable sunbeds, or take a dip in the cool waters.</p>
+          </div>
+        </div>
+        <!-- Slide 5 -->
+        <div class="swiper-slide">
+          <img src="./images/bilderboken-rlwE8f8anOc-unsplash.jpg" alt="pic4">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h1></h>Elegant Ambiance Throughout</h1>
+            <p style="font-size: 20px;" >Our beautifully appointed corridors create a sense of elegance . Admire the intricate
+              details or take a dip in the cool waters </p>
+          </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="swiper-slide">
+          <img src="./image1/boating area2.jpg" alt="pic9">
+          <div class="overlay"></div>
+          <div class="slide-text">
+            <h1>Unwind in Paradise</h1>
+            <p style="font-size: 20px;" >Escape the hustle and bustle and soak up the sun by our sparkling pool. Enjoy refreshing cocktails,
+              lounge on comfortable sunbeds, or take a dip in the cool waters.</p>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+
+      <div class="container booking-area">
+        <form class="row">
+          <div class="col-lg-2 mb-3 mb-lg-0">
+            <input type="date" class="form-control" placeholder="Date">
+          </div>
+          <div class="col-lg-2 mb-3 mb-lg-0">
+            <input type="date" class="form-control" placeholder="Date">
+          </div>
+          <div class="col-lg-2 mb-3 mb-lg-0">
+            <select class="form-control">
+              <option value="">Adult</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <div class="col-lg-2 mb-3 mb-lg-0">
+            <select class="form-control">
+              <option value="">Children</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <div class="col-lg-2 mb-3 mb-lg-0">
+            <button style="margin-bottom: 10%;" type="submit" class="main-btn rounded-2 px-lg-3">avaliablities</button>
+          </div>
+        </form>
+      </div>
+
+  </section>
+
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up" data-aos-duration="3000">
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <h6 class="section-title text-start text-warning text-uppercase mb-2">About Us</h6>
+            <h1 class="mb-3">
+              Welcome to <span class="text-warning text-uppercase">Hotel</span>
+            </h1>
+            <p class="mb-4">
+              Welcome to Hudson Resot, where exceptional service and unforgettable experiences await you.           Welcome to your home away from home, where comfort and luxury await.
+            </p>
+            <div class="row g-3 pb-4">
+              <div class="col-sm-4 wow fadeIn">
+                <div class="border rounded p-1">
+                  <div class="border rounded text-center p-4">
+                    <i class="bi bi-building fa-2x text-warning mb-2"></i>
+                    <h2 class="mb-1" id="rooms-counter">0</h2>
+                    <p class="mb-0">Rooms</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 wow fadeIn">
+                <div class="border rounded p-1">
+                  <div class="border rounded text-center p-4">
+                    <i class="bi bi-people-fill fa-2x text-warning mb-2"></i>
+                    <h2 class="mb-1" id="clients-counter">0</h2>
+                    <p class="mb-0">Clients</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 wow fadeIn">
+                <div class="border rounded p-1">
+                  <div class="border rounded text-center p-4">
+                    <i class="bi bi-person-badge fa-2x text-warning mb-2"></i>
+                    <h2 class="mb-1" id="staffs-counter">0</h2>
+                    <p class="mb-0">Staffs</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- images -->
+            <a href="./team.html" class="btn btn-warning py-3 px-5 mt-2" style="color: white;">Explore More</a>
+          </div>
+          <div class="col-lg-6">
+            <div class="row g-3">
+              <div class="col-6 text-end">
+                <img src="./images/faculty.avif" alt="about pic" style="margin-top: 25%;"
+                  class="img-fluid rounded w-75 wow zoomIn">
+              </div>
+
+              <div class="col-6 text-start">
+                <img src="./image1/about2.avif" alt="about pic" class="img-fluid rounded w-100 wow zoomIn">
+              </div>
+
+              <div class="col-6 text-end">
+                <img src="./images/view4.avif" alt="about pic" class="img-fluid rounded w-50 wow zoomIn">
+              </div>
+
+              <div class="col-6 text-start">
+                <img src="./image1/about1.avif" alt="about pic" class="img-fluid rounded w-75 wow zoomIn">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ROOMS SECTION LIST -->
+  <section data-aos="zoom-out" id="rooms" class="rooms_wrapper" style="margin-top: 2%; margin-bottom: 10%;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 section-tittle text-center mb-5">
+          <h6>What I can do for you</h6>
+          <h3>Our Favorite Rooms</h3>
+
+        </div>
+      </div>
+      <div class="row m-0">
+        <div class="col-md-4 mb-4 mb-lg-0">
+          <div class="rooms-items">
+            <img src="./image2/bedroom55.jpg" class="img-fluid" alt="bed 1">
+            <div class="room-item-wrap">
+              <div class="room-content">
+                <h5 class="text-white mb-lg-5  text-decoration-underline">Royal Suit</h5>
+                <p class="text-white">Discover five of our favourite dresses from our new colllection that are destined
+                  to be worn and loved immediately</p>
+                <p class="text-white fw-bold mt-lg-4">$980 / Per Night</p>
+                <button class="main-btn border-white mt-lg-1" onclick="window.location.href='./contact.html'">Book
+                  Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-lg-0">
+          <div class="rooms-items">
+            <img src="./image2/bedroom99.jpg" class="img-fluid" alt="bed 1">
+            <div class="room-item-wrap">
+              <div class="room-content">
+                <h5 class="text-white mb-lg-5  text-decoration-underline">Family Room</h5>
+                <p class="text-white">Our Deluxe Room offers a spacious designed retreat for a comfortable stay. Enjoy
+                  city views from your large windows</p>
+                <p class="text-white fw-bold mt-lg-4">$650 / Per Night</p>
+                <button class="main-btn border-white mt-lg-1" onclick="window.location.href='./contact.html'">Book
+                  Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-4 mb-4 mb-lg-0">
+          <div class="rooms-items">
+            <img src="./image2/bedroom33.avif" class="img-fluid" alt="bed 1">
+            <div class="room-item-wrap">
+              <div class="room-content">
+                <h5 class="text-white mb-lg-5  text-decoration-underline">Deluxe Room</h5>
+                <p class="text-white">Enjoy stunning city views from your large windows, and relax in style with our
+                  plush king-sized bed. Discover five of our favourite dresses
+                </p>
+                <p class="text-white fw-bold mt-lg-4">$490 / Per Night</p>
+                <button class="main-btn border-white mt-lg-1" onclick="window.location.href='./contact.html'">Book
+                  Now</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- counter -->
+  <section>
+    <div class="counter mt-5">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-3 mb-lg-0 mb-md-0 mb-5">
+            <h1>
+              <span id="count1"></span>+
+            </h1>
+            <p> Happy Client</p>
+          </div>
+
+          <div class="col-md-3 mb-lg-0 mb-md-0 mb-5">
+            <h1>
+              <span id="count2"></span>+
+            </h1>
+            <p>New Friendships</p>
+          </div>
+
+          <div class="col-md-3 mb-lg-0 mb-md-0 mb-5">
+            <h1>
+              <span id="count3"></span>+
+            </h1>
+            <p>Five Stars Rating </p>
+          </div>
+
+
+          <div class="col-md-3 mb-lg-0 mb-md-0 mb-5">
+            <h1>
+              <span id="count4"></span>+
+            </h1>
+            <p> Served Breakfast</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- GALLERY -->
+  <section data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" style="margin-top: 10%;"
+    class="gallery" id="gallery">
+    <div class="row">
+      <div class="col-sm-12 section-tittle text-center mb-5">
+        <h3>Our Gallery</h3>
+      </div>
+    </div>
+
+    <div class="box-container">
+      <div class="box">
+        <img src="./images/BOUT2.avif" alt="gallery">
+        <div class="content">
+          <h2 style="color: white;">Pool Area</h2>
+          <p>Immerse yourself in the serene waters of our stunning pool, a true oasis of tranquility.</p>
+          <a href="./services.html" class="btn btn-warning" role="button" style="color: white;">
+            <i class="bi bi-arrow-right-circle"></i> Explore Now
+          </a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image1/about3.avif" alt="gallery">
+        <div class="content">
+          <h2 style="color: white;">Cooridor</h2>
+          <p>Step into our elegant lobby, where luxury meets comfort. With its decor warm lighting.</p>
+          <a href="./services.html" class="btn btn-warning" role="button" style="color: white;">
+            <i class="bi bi-arrow-right-circle"></i> Explore Now
+          </a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./images/service2.webp" alt="gallery">
+        <div class="content">
+          <h2 style="color: white;">Edibles</h2>
+          <p>Indulge in an exquisite dining experience at our hotel, where every meal is a journey through a world of
+            flavors.</p>
+          <a href="./cafeteria.html" class="btn btn-warning" role="button" style="color: white;">
+            <i class="bi bi-arrow-right-circle"></i> Explore Now
+          </a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./images/beach area.jpg" alt="gallery">
+        <div class="content">
+          <h2 style="color: white;">Swimming Area</h3>
+            <p>Relax on our pristine private beach, where the sun, sand, and sea combine to create a perfect getaway.
+            </p>
+            <a href="./services.html" class="btn btn-warning" role="button" style="color: white;">
+              <i class="bi bi-arrow-right-circle"></i> Explore Now
+            </a>
+        </div>
+      </div>
+
+
+      <div class="box">
+        <img src="./images/food.jpg" alt="gallery">
+        <div class="content">
+          <h2 style="color: white;">Grub</h2>
+          <p>Indulge in an exquisite dining experience at our hotel, where every meal is a journey through a world of
+            flavors.</p>
+          <a href="./cafeteria.html" class="btn btn-warning" role="button" style="color: white;">
+            <i class="bi bi-arrow-right-circle"></i> Explore Now
+          </a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image2/bedroom66.avif" alt="gallery">
+        <div class="content">
+          <h2 style="color: white;">Suite</h2>
+          <p>Experience tranquility in our Suite, the epitome of comfort. This spacious suite with premium linens.</p>
+          <a href="./index.html#rooms" class="btn btn-warning" role="button" style="color: white;">
+            <i class="bi bi-arrow-right-circle"></i> Explore Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- TESTINOMINALS -->
+  <section data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+    <div class="col-sm-12 section-tittle text-center mb-7" style="margin-top: 10%;">
+
+      <h2>Reviews Of Clients</h2>
+
+      <div class="container-xxl testimonial my-5 py-5 bg-dark wow zoomIn">
+        <div class="container">
+          <div class="owl-carousel testimonial-carousel py-5" style="display: block;">
+            <!-- 1st -->
+            <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+              <p>I had a fantastic stay at the Hudson Resort. The staff were incredibly friendly and helpful, and the
+                room was spotless and well-equipped. The highlight was definitely the stunning views from the pool area.
+                It was the perfect spot to relax and unwind. Will definitely be coming back!</p>
+              <div class="d-flex align-items-center">
+                <img src="./image1/client7.jpg" alt="coridoor" class="img-fluid flex-shrink-0 rounded"
+                  style="width: 45px; height: 45px;">
+                <div class="ps-3">
+                  <h6 class="fw-bold mb-1">John D.</h6>
+                  <small>Bussiness man</small>
+                </div>
+              </div>
+              <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mn-n1"></i>
+            </div>
+
+            <!-- 2nd -->
+            <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+              <p>The Hudson Resort offers a wonderful experience overall. The rooms are beautifully decorated and
+                comfortable.The breakfast buffet was delicious, The only downside was that the Wi-Fi was a bit spotty
+                during my stay. However, the on-site restaurant had excellent food and service. </p>
+              <div class="d-flex align-items-center">
+                <img src="./image1/client2.webp" alt="coridoor" class="img-fluid flex-shrink-0 rounded"
+                  style="width: 45px; height: 45px;">
+                <div class="ps-3">
+                  <h6 class="fw-bold mb-1">Sarah M</h6>
+                  <small>Teacher</small>
+                </div>
+              </div>
+              <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mn-n1"></i>
+            </div>
+
+            <!-- 3rd -->
+            <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+              <p>Absolutely loved my stay at the Hudson Resort. The amenities were top-notch, especially the spa and
+                fitness center. The staff went above and beyond to ensure our comfort. The only issue was a minor noise
+                from the construction nearby, but it didn’t ruin the experience.</p>
+              <div class="d-flex align-items-center">
+                <img src="./image1/client4.jpg" alt="coridoor" class="img-fluid flex-shrink-0 rounded"
+                  style="width: 45px; height: 45px;">
+                <div class="ps-3">
+                  <h6 class="fw-bold mb-1">Michael T</h6>
+                  <small>Scientist</small>
+                </div>
+              </div>
+              <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mn-n1"></i>
+            </div>
+
+
+            <!-- 4th -->
+            <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+              <p>The Hudson Resort has potential, but my stay was a bit disappointing. The room was clean but smaller
+                than expected, and the check-in process was slow. On the plus side, the location is great and the pool
+                area is very nice. I hope they improve their service in the future</p>
+              <div class="d-flex align-items-center">
+                <img src="./image1/client1.jpg" alt="coridoor" class="img-fluid flex-shrink-0 rounded"
+                  style="width: 45px; height: 45px;">
+                <div class="ps-3">
+                  <h6 class="fw-bold mb-1">Emily W</h6>
+                  <small>Software engineer</small>
+                </div>
+              </div>
+              <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mn-n1"></i>
+            </div>
+
+
+            <!-- 5th-->
+            <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+              <p>Fantastic stay at the Hudson Resort! The customer service was exceptional, and the hotel’s amenities
+                exceeded my expectations. The breakfast delicious,The overall atmosphere was relaxing. I also
+                appreciated the attention to detail in the room’s cleanliness.</p>
+              <div class="d-flex align-items-center">
+                <img src="./image1/client5.jpg" alt="coridoor" class="img-fluid flex-shrink-0 rounded"
+                  style="width: 45px; height: 45px;">
+                <div class="ps-3">
+                  <h6 class="fw-bold mb-1">David B</h6>
+                  <small>Doctor</small>
+                </div>
+              </div>
+              <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mn-n1"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- explore new food -->
+  <section class="explore" id="explore" style="margin-top: 10%; margin-bottom: 15%;">
+    <p class="section_subheader">
+      EXPLORE
+    </p>
+    <h2 class="section_header">
+      What's New Today
+    </h2>
+    <div class="explore_bg">
+      <div class="explore_content">
+        <p class="section_description">
+          15 SEP 2024
+        </p>
+        <h4 style="margin-top: 2%;">A New Menu Is Avaliable In Our Hotel</h4>
+        <a href="./cafeteria.html#WeOfferTopNotch" class="btn btn-warning" role="button"
+          style="color: white; background-color: #FFA500;">
+          Continue
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- footer -->
+  <section  id=" contact" class="footer_wrapper mt-3 mt-md-0 pb-0">
+    <div class="container pb-3">
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <h5>HUDSON RESORT</h5>
+          <p class="ps-0">
+            Discover the world of comfort, luxury and adventure as you explore our curated selected of
+            hotels, making every moment of your getaway truly extraordinary
+          </p>
+          <div class="contact-info">
+            <ul class="list-unstyled">
+              <li><a href="#"><i class="fa fa-home me-3"></i>No. 96, South City, London</a></li>
+              <li><a href="#"><i class="fa fa-phone me-3"></i>+923137825639</a></li>
+              <li><a href="#"><i class="fa fa-envelope me-3"></i>hudson@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="link-widget p-0">
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./cafeteria.html">Cafeteria</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="./team.html">Team</a></li>
+            <li><a href="./services.html">Amenities</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-lg-3 col-md-6">
+          <h5>More Links</h5>
+          <ul class="link-widget p-0">
+            <li><a href="./index.html#about">About Us</a></li>
+            <li><a href="./team.html#team">Our Offices</a></li>
+           
+            <li><a href="./reset_password.html">Reset</a></li>
+            <li><a href="./team.html">Team</a></li>
+            <li><a href="./sign_up.html">Sign Up</a></li>
+            <li><a href="./login.html">Login</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Newsletter</h5>
+          <div class="form-group mb-6">
+            <input type="email" class="form-control bg-transparent" placeholder="enter your email here">
+            <button type="submit" class="main-btn rounded-2 mt-3 border-white text-white">Subscribe</button>
+          </div>
+          <h5>Stay Connected </h5>
+          <ul class="social-network d-flex align-items-center p-0">
+            <li><a href="https://www.facebook.com/signup"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/i/flow/signup?lang=en"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.google.co.uk/"><i class="fab fa-google-plus-g"></i></a></li>
+            <li><a href="https://vimeo.com/log_in"><i class="fab fa-vimeo-v"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="conatiner-fluid copyright-section">
+      <p>Copyright <a href="./index.html">&copy;AuthArtisans</a>All Rights Resesrved</p>
+    </div>
+  </section>
+
+
+  <!-- for swiper in swiper.js library -->
+  <div class=" autoplay-progress">
+    <svg viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="20"></circle>
+    </svg>
+    <span></span>
+  </div>
+  </div>
+
+  <!-- bootsrap link -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- js link for animations -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <!-- script tag for swiperjs library -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- js file -->
+  <script src="./script.js"></script>
+  <!-- jquery link -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- js owl carousel link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+
+  <!-- js for carousel and testimonials -->
+  <script>
+    $(document).ready(function () {
+      $(".testimonial-carousel").owlCarousel({
+        loop: true,            // Enable looping of slides
+        margin: 20,            // Margin between items
+        nav: true,             // Enable navigation arrows
+        dots: false,           // Disable dots navigation
+        autoplay: true,        // Enable auto-play
+        autoplayTimeout: 5000, // Time between slides (in ms)
+        responsive: {
+          0: {
+            items: 1           // Items to display at 0px and up
+          },
+          600: {
+            items: 2           // Items to display at 600px and up
+          },
+          1000: {
+            items: 3           // Items to display at 1000px and up
+          }
+        },
+        navText: [
+          '<i class="bi bi-chevron-left"></i>',  // Custom previous arrow
+          '<i class="bi bi-chevron-right"></i>'  // Custom next arrow
+        ]
+      });
+    });
+
+  </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
